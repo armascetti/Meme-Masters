@@ -34,8 +34,8 @@ nav {
 
 main {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  display: inline-block;
+  margin: 0 40px 0; 
   flex-direction: column;
 }
 
@@ -45,6 +45,7 @@ h1 {
 
 
 .memePics {
-  height: 300px;
-  width: 500px;
+  display: flex;
+  height: 200px;
+  width: 300px;
 }

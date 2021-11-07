@@ -1,6 +1,12 @@
 <%- include('./partials/html-head') %>
 <%- include('./partials/nav') %>
 
-<img class="memePics" src="<%= getAllMemes %> ">
+<main>
+  <!-- <p> Results count = 
+    <% JSON.stringify({results}, null, 2)%> </p> -->
+<% for(let i = 0; i < results.length; i++){ %>
+  <div class="memePics"><img src="<%= results[i].url %>"></div><br>
+        <% } %>
+      </main>
 
   <%- include('./partials/footer') %>
