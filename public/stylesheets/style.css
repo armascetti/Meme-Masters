@@ -42,3 +42,9 @@ main {
 h1 {
   font-size: 3.6rem;
 }
+
+
+.memePics {
+  height: 300px;
+  width: 500px;
+}

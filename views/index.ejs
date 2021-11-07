@@ -3,6 +3,7 @@
 
 <main>
   <h1>hello, <%= user ? user.profile.name : "friend" %></h1>
+  <p> Login to Make Your Meme! </p>
   <% if (user?.profile.avatar) { %>
     <div>
       <img 
@@ -11,11 +12,13 @@
       >
     </div>
   <% } %>
- <form action="/allMemes" method="GET">
+</main>
+<% if (user) {%>  
+  <form action="/allMemes" method="GET">
     <button> 
       Click Here To Pick a Meme!
     </button>
   </form>
-</main>
+  <% } %>
 
 <%- include('./partials/footer') %>
