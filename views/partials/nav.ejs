@@ -16,4 +16,11 @@
         </button>
       </a>
     <% } %>
+    <% if (user) {%>  
+      <form action="/allMemes" method="GET">
+        <button> 
+          Click Here To Pick a Meme!
+        </button>
+      </form>
+      <% } %>
   </nav>

@@ -2,8 +2,8 @@
 <%- include('./partials/nav') %>
 
 <main>
-  <h1>hello, <%= user ? user.profile.name : "friend" %></h1>
-  <p> Login to Make Your Meme! </p>
+  <h1>Welcome <%= user ? user.profile.name : "to Meme-Masters!" %></h1>
+  <p><h2> Login to Make Your Meme!</h2></p>
   <% if (user?.profile.avatar) { %>
     <div>
       <img 
@@ -13,12 +13,6 @@
     </div>
   <% } %>
 </main>
-<% if (user) {%>  
-  <form action="/allMemes" method="GET">
-    <button> 
-      Click Here To Pick a Meme!
-    </button>
-  </form>
-  <% } %>
+
 
 <%- include('./partials/footer') %>

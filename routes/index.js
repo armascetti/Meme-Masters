@@ -10,6 +10,9 @@ router.get('/', function(req, res){
 
 router.get('/allMemes', isLoggedIn, memeCtrl.allMemes)
 
+router.get('/captions/:id', isLoggedIn, memeCtrl.addCaption)
+
+
 export {
   router
 }
