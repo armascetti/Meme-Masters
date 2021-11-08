@@ -28,10 +28,10 @@ function show(req, res) {
         results,
         memeId
       })
-        // .catch(err => {
-        //   console.log(err)
-        //   res.redirect('/')
-        // })
+    })
+    .catch(err => {
+      console.log(err)
+      res.redirect('/')
     })
 }
 

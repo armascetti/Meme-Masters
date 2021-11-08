@@ -6,10 +6,10 @@
         <% for(let i=0; i < 20; i++){ %>
           <div class="memePics">
             <!-- <form 
-       //    action="/show/<%= results[i].id%>"
+           action="/show/<%= results[i].id%>"
              method="GET"
              > -->
-             <a href="/show/<%= results[i].id%>"> 
+             <a href="/allMemes/show/<%= results[i].id%>"> 
                 <img 
                 width="175" 
                 height="175" 
@@ -23,3 +23,4 @@
     </main> 
 
     <%- include('../partials/footer') %>
+
