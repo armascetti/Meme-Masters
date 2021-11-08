@@ -1,0 +1,25 @@
+<%- include('./partials/html-head') %>
+  <%- include('./partials/nav') %>
+
+    <main>
+      <div class="memeCaption">
+        <div class="meme">
+          <% for(let i=0; i < results.length; i++){ %>
+            <% if (results[i].id=== memeId) { %>
+              <img width="250" height="250" src="<%= results[i].url %>">
+              <% } %>
+                <% } %>
+        </div>
+        <form 
+        id="add-caption-form" 
+        action="/show/<%=results.id %>"
+        method="POST"
+          >
+          <label for="content-textarea"> Add Your Own Caption Here: </label>
+          <textarea name="content" id="content-textarea"></textarea>
+          <button type="submit"> Add Caption </button>
+          </form>
+
+    </main>
+
+    <%- include('./partials/footer') %>
