@@ -7,7 +7,7 @@ function allMemes(req, res) {
       let results = response.data.data.memes
       // let getAllMemes = results.memes[19].url
       console.log(JSON.stringify({ responseData: response.data }, null, 2))
-      res.render('memes', {
+      res.render('memes/index', {
         title: "All of the Memes!",
         results
       })
@@ -18,12 +18,12 @@ function allMemes(req, res) {
     })
 }
 
-function addCaption(req, res) {
+function show(req, res) {
   memeApi.get('/get_memes')
     .then(response => {
       let results = response.data.data.memes
       let memeId = req.params.id
-      res.render('captions', {
+      res.render('memes/show' ,{
         title: "helloooo",
         results,
         memeId
@@ -37,5 +37,5 @@ function addCaption(req, res) {
 
 export {
     allMemes,
-    addCaption,
+   show,
   }

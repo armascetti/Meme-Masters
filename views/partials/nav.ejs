@@ -4,7 +4,7 @@
 </head>
 <body>
   <nav>
-    <a href="/allMemes"></a>
+    <!-- <a href="/allMemes"></a> -->
     <% if (user) { %>
       <a href="/auth/logout">
         <button type="submit">Logout</button>
@@ -17,10 +17,10 @@
       </a>
     <% } %>
     <% if (user) {%>  
-      <form action="/allMemes" method="GET">
+      <a href="/allMemes">
         <button> 
           Click Here To Pick a Meme!
         </button>
-      </form>
+     </a>
       <% } %>
   </nav>
