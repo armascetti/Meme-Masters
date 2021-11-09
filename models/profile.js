@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 
 
 const captionSchema = new Schema ({
-  conent: String, 
+  content: String, 
   author: {type: Schema.Types.ObjectId, ref: 'Profile'}
 }, {
   timestamps: true

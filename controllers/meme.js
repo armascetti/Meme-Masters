@@ -1,5 +1,5 @@
 import { memeApi } from '../config/api.js'
-
+import { Profile } from '../models/profile.js'
 
 function allMemes(req, res) {
   memeApi.get('/get_memes')
@@ -35,7 +35,14 @@ function show(req, res) {
     })
 }
 
+function createCaption(req, res){
+  console.log("CREATING CODE")
+// res.redirect(`/show/${memeId}`)
+}
+
+
 export {
     allMemes,
    show,
+   createCaption, 
   }

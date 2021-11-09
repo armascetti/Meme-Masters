@@ -1,26 +1,16 @@
 <%- include('../partials/html-head') %>
   <%- include('../partials/nav') %>
 
-   <main>
+    <main>
       <div class="memeContainer">
         <% for(let i=0; i < 20; i++){ %>
           <div class="memePics">
-            <!-- <form 
-           action="/show/<%= results[i].id%>"
-             method="GET"
-             > -->
-             <a href="/allMemes/show/<%= results[i].id%>"> 
-                <img 
-                width="175" 
-                height="175" 
-               src="<%= results[i].url %>"
-                >
-              </a>
-            <!-- </form> -->
+            <a href="/allMemes/show/<%= results[i].id%>">
+              <img width="175" height="175" src="<%= results[i].url %>">
+            </a>
           </div>
-         <% } %>
+          <% } %>
       </div>
-    </main> 
-
+    </main>
+    
     <%- include('../partials/footer') %>
-

@@ -6,20 +6,17 @@
         <div class="meme">
           <% for(let i=0; i < results.length; i++){ %>
             <% if (results[i].id=== memeId) { %>
-              <%  console.log("THE MEMES", results)%>
               <img width="250" height="250" src="<%= results[i].url %>">
               <% } %>
-                <% } %>
-        </div>
-        <form 
-        id="add-caption-form" 
-        action="/show/<%=results.id %>"
-        method="POST"
-          >
-          <label for="content-textarea"> Add Your Own Caption Here: </label>
-          <textarea name="content" id="content-textarea"></textarea>
-          <button type="submit"> Add Caption </button>
+        </div>  <% } %>
+        <% if (user) { %>
+          <!-- <form id="add-caption-form" action="/show/<%= memeId %>/captions" method="POST"> -->
+          <form id="add-caption-form" action="/show/captions" method="POST">
+            <label for="content-textarea"> Add Your Own Caption Here: </label>
+            <input name="content" id="content-textarea" type="text" value="<%= memeId %>">
+            <button type="submit"> Add Caption </button>
           </form>
-    </main>
+          <% } %>   
+    </main> 
 
     <%- include('../partials/footer') %>
