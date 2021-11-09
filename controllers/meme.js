@@ -36,8 +36,8 @@ function show(req, res) {
 }
 
 function createCaption(req, res){
-  console.log("CREATING CODE")
-// res.redirect(`/show/${memeId}`)
+  console.log("CREATING CAPTION", req.params.id)
+res.redirect(`/allMemes/show/${req.params.id}`)
 }
 
 

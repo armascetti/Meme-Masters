@@ -47,7 +47,7 @@ h1 {
 .memeContainer {
   display: flex;
   flex-wrap: wrap;
-  width: 53%;
+  width: 90%;
   justify-content: center;
   margin: 0px auto;
   border: 10px solid burlywood;

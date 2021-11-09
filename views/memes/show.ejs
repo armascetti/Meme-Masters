@@ -8,15 +8,16 @@
             <% if (results[i].id=== memeId) { %>
               <img width="250" height="250" src="<%= results[i].url %>">
               <% } %>
-        </div>  <% } %>
-        <% if (user) { %>
-          <!-- <form id="add-caption-form" action="/show/<%= memeId %>/captions" method="POST"> -->
-          <form id="add-caption-form" action="/show/captions" method="POST">
-            <label for="content-textarea"> Add Your Own Caption Here: </label>
-            <input name="content" id="content-textarea" type="text" value="<%= memeId %>">
-            <button type="submit"> Add Caption </button>
-          </form>
-          <% } %>   
-    </main> 
+        </div>
+        <% } %>
+          <% if (user) { %>
+            <form id="add-caption-form" action="/allMemes/<%= memeId %>/captions" method="POST">
+              <label for="content-textarea"> Add Your Own Caption Here: </label>
+              <textarea name="content" id="content-textarea"></textarea>
+              <button type="submit"> Add Caption </button>
+            </form>
+            <% } %>
+            
+    </main>
 
     <%- include('../partials/footer') %>
