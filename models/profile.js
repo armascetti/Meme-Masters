@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 
 const captionSchema = new Schema ({
   content: String, 
-  author: {type: Schema.Types.ObjectId, ref: 'Profile'}
+   owner: {type: Schema.Types.ObjectId, ref: 'Profile'}
 }, {
   timestamps: true
 })
@@ -29,6 +29,9 @@ const profileSchema = new Schema({
 
 const Profile = mongoose.model('Profile', profileSchema)
 
+const Caption = mongoose.model('Caption', captionSchema )
+
 export {
-  Profile
+  Profile,
+  Caption 
 }

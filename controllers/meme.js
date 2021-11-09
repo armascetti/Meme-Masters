@@ -1,5 +1,5 @@
 import { memeApi } from '../config/api.js'
-import { Profile } from '../models/profile.js'
+import { Caption, Profile } from '../models/profile.js'
 
 function allMemes(req, res) {
   memeApi.get('/get_memes')
@@ -19,15 +19,23 @@ function allMemes(req, res) {
 }
 
 function show(req, res) {
+  
+ let user = req.user.profile.avatar
+ console.log("THIS IS USER", user)
   memeApi.get('/get_memes')
-    .then(response => {
-      let results = response.data.data.memes
+  .then(meme => {
+      let results = meme.data.data.memes
       let memeId = req.params.id
       res.render('memes/show' ,{
         title: "helloooo",
         results,
-        memeId
+        memeId,
+        meme,
+        user
       })
+
+ 
+    
     })
     .catch(err => {
       console.log(err)
@@ -36,10 +44,13 @@ function show(req, res) {
 }
 
 function createCaption(req, res){
-  console.log("CREATING CAPTION", req.params.id)
-res.redirect(`/allMemes/show/${req.params.id}`)
+  Profile.findById(req.user.profile._id) 
+   .then(profile => {
+   profile.caption.push(req.body)
+   profile.save()
+    res.redirect(`/allMemes/show/${req.params.id}`)
+  })
 }
-
 
 export {
     allMemes,
