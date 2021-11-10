@@ -5,8 +5,6 @@ function passUserToView(req, res, next) {
 }
 
 function isLoggedIn(req, res, next) {
-  console.log("LOGGGGEEDDD INNNN")
-console.log(req)
   if (req.isAuthenticated()) return next()
   res.redirect('/auth/google')
 }
