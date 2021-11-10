@@ -8,7 +8,7 @@ router.get('/', isLoggedIn, memeCtrl.allMemes)
 
 router.get('/show/:id', isLoggedIn, memeCtrl.show)
 
-router.post('/:id/captions', isLoggedIn, memeCtrl.createCaption)
+router.post('/show/:id', isLoggedIn, memeCtrl.createCaption)
 
 
 export {

@@ -4,6 +4,7 @@ const Schema = mongoose.Schema
 
 const captionSchema = new Schema ({
   content: String, 
+  memeId: String, 
    owner: {type: Schema.Types.ObjectId, ref: 'Profile'}
 }, {
   timestamps: true

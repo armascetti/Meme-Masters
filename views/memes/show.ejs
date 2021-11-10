@@ -10,23 +10,28 @@
               <% } %>
         </div>
         <% } %>
-          <div style="display: flex; ">
-            <% if (user) { %>
-              <form action="/allMemes/<%= memeId %>/captions" method="POST" name="content">
-                <img src="<%= user %>">
-                <textarea type="text" name="content" placeholder="Add Your Own Caption Here:">
-                  </textarea>
-                <button type="submit"> Add Caption </button>
-                <% } %>
+          <div>
+            <% if (user){ %>
+              <form action="/allMemes/show/<%= memeId %>" method="POST">
+                <% if (captions.length) { %>
+                  <% captions.forEach(meme=> { %>
+                    <img src="<%= user %>">
+                    <ul>
+                      <li>
+                        <%= meme.content %>
+                      </li>
+                    </ul>
           </div>
-          </form>
-          <% if (user) { %>
-            <% for (let i=0; i < captions.length; i++) { %>
-              <p>
-                <%= captions[i] %>
-              </p>
+          <% }) %>
+            <% } else { %>
+              <h1> No Captions Yet </h1>
+              <img src="<%= user %>">
+              <textarea type="text" name="content" placeholder="Add Your Own Caption Here:">
+          </textarea>
+              <button type="submit"> Add Caption </button>
+              </form>
+
               <% } %>
-
+                <% } %>
     </main>
-
     <%- include('../partials/footer') %>

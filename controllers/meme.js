@@ -21,6 +21,8 @@ function allMemes(req, res) {
 
 function show(req, res) {
   let user = req.user.profile.avatar
+  let captions = Caption.find({memeId: req.params.id})
+  console.log("captions from database", captions)
   memeApi.get('/get_memes')
     .then(meme => {
       let results = meme.data.data.memes
@@ -30,7 +32,8 @@ function show(req, res) {
         results,
         memeId,
         meme,
-        user
+        user,
+        captions,
       })
     })
     .catch(err => {
@@ -41,17 +44,17 @@ function show(req, res) {
 
 function createCaption(req, res) {
   let user = req.user.profile._id
-  req.body.owner = user 
+  req.body.owner = user
+  req.body.memeId = req.params.id
   Caption.create(req.body)
-  .then(captions => {
- res.render('allMemes/captions', {
-   captions
- })
-  .catch(err => {
-    console.log(err)
-    res.redirect('/')
-  })
- })
+    .then(captions => {
+      console.log("CAPTIONNSSS", captions)
+      res.redirect(`/allMemes/show/${req.params.id}`)
+    })
+    .catch(err => {
+      console.log(err)
+      res.redirect('/')
+    })
 }
 
 export {
