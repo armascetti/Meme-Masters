@@ -13,24 +13,23 @@
           <div>
             <% if (user){ %>
               <form action="/allMemes/show/<%= memeId %>" method="POST">
+                <textarea type="text" name="content" placeholder="Add Your Own Caption Here:">
+                </textarea> 
+                <button type="submit"> Add Caption </button><br>
                 <% if (captions.length) { %>
-                  <% captions.forEach(meme=> { %>
-                    <img src="<%= user %>">
+                  <% captions.forEach(c=> { %>
+                    <img src="<%= c.avatar %>">
                     <ul>
                       <li>
-                        <%= meme.content %>
+                        <%= c.content %>
                       </li>
                     </ul>
           </div>
           <% }) %>
             <% } else { %>
-              <h1> No Captions Yet </h1>
               <img src="<%= user %>">
-              <textarea type="text" name="content" placeholder="Add Your Own Caption Here:">
-          </textarea>
-              <button type="submit"> Add Caption </button>
+              <h1> No Captions Yet </h1>
               </form>
-
               <% } %>
                 <% } %>
     </main>
