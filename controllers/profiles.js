@@ -31,14 +31,14 @@ function show(req, res) {
     })
 }
 
-function addMeme(req, res){
+function saveMemeAsFavorite (req, res){
   console.log("ADDD MEMEEE", req.body)
-  res.redirect("/profiles/show")
+  res.redirect(`/profiles/${req.user.profile._id}`)
 }
 
 
 export {
   index,
   show,
-  addMeme 
+  saveMemeAsFavorite
 }

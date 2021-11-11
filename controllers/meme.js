@@ -26,7 +26,6 @@ function show(req, res) {
   let captions = []
   Caption.find({ memeId: req.params.id })
     .then((arrayOfCaptions) => {
-      console.log("ARRAYYYY of captions", { captions, arrayOfCaptions })
       captions = captions.concat(arrayOfCaptions)
       return memeApi.get('/get_memes')
     })
@@ -53,7 +52,6 @@ function createCaption(req, res) {
   newRequest.avatar = req.user.profile.avatar
   Caption.create(newRequest)
     .then(captions => {
-      console.log('Created a caption:', captions)
       res.redirect(`/allMemes/show/${req.params.id}`)
     })
     .catch(err => {
@@ -63,13 +61,13 @@ function createCaption(req, res) {
 }
 
 function deleteCaption(req, res) {
-  console.log("DATAAAA", req.params)
   Caption.findByIdAndRemove(req.params.captionId)
     .then(results => {
-      console.log("RESULTS", results)
       res.redirect(`/allMemes/show/${req.params.id}`)
     })
 }
+
+
 
 export {
   allMemes,

@@ -8,7 +8,10 @@ router.get("/", isLoggedIn, profilesCtrl.index)
 
 router.get('/:id', isLoggedIn, profilesCtrl.show)
 
-router.post('/meme', isLoggedIn, profilesCtrl.addMeme)
+
+router.post('/:id', isLoggedIn, profilesCtrl.saveMemeAsFavorite)
+
+
 export {
   router
 }
