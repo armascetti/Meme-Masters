@@ -10,6 +10,8 @@ router.get('/show/:id', isLoggedIn, memeCtrl.show)
 
 router.post('/show/:id', isLoggedIn, memeCtrl.createCaption)
 
+router.delete('/memes/:id/captions/:captionId', isLoggedIn, memeCtrl.delete)
+
 
 export {
   router
