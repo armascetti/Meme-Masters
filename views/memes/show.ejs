@@ -4,9 +4,14 @@
     <main>
       <div class="memeCaption">
         <div class="meme">
+          
+          <form type="text" name="url" name="name" method="POST">
+            <a href="/profiles/meme">
           <% for(let i=0; i < results.length; i++){ %>
             <% if (results[i].id===memeId) { %>
               <img width="250" height="250" src="<%= results[i].url %>">
+              <button type="submit">Add to Profile </button>
+            <a></form>
               <% } %>
         </div>
         <% } %>
@@ -15,26 +20,25 @@
               <form action="/allMemes/show/<%= memeId %>" method="POST">
                 <textarea type="text" name="content">
                 </textarea>
-                <!--- TODO: Add a *HIDDEN* input here to hold the URL --->
                 <button type="submit"> Add Caption </button><br>
                 <% if (captions.length) { %>
               </form>
               <% captions.forEach(c=> { %>
-                <% if (user._id == c.owner.toString()) { %>
-                <form action="/allMemes/memes/<%= memeId %>/captions/<%= c._id %>?_method=DELETE" method="POST">
-                  <button id="deleteCapbtn" type="submit"> Delete My Caption </button>
-                </form>
-                <%}%>
-                <img src="<%= c.avatar %>">
-                <ul>
-                  <li>
-                    <%= c.content %>
-                  </li>
-                </ul>
+                <% if (user._id==c.owner.toString()) { %>
+                  <form action="/allMemes/memes/<%= memeId %>/captions/<%= c._id %>?_method=DELETE" method="POST">
+                    <button id="deleteCapbtn" type="submit"> Delete My Caption </button>
+                  </form>
+                  <%}%>
+                    <img src="<%= c.avatar %>">
+                    <ul>
+                      <li>
+                        <%= c.content %>
+                      </li>
+                    </ul>
           </div>
           <% }) %>
             <% } else { %>
-              <img src="<%= user %>">
+              <img src="<%= user._id %>">
               <h2> No Captions Yet </h2>
               </form>
               <% } %>
