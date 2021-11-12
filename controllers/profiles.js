@@ -34,11 +34,10 @@ function show(req, res) {
 
 function saveMemeAsFavorite(req, res) {
   Profile.findById(req.user.profile._id)
-    .then(profile => {
-      profile.favoriteMemeUrls.push(req.body.url)
+    .then(profile => {      
+       profile.favoriteMemeUrls.push(req.body.url)
        profile.save()
-      .then(() => {
-          console.log("PROFILEEEE", profile)
+      .then(() => {        
           res.redirect(`/profiles/${req.user.profile._id}`)
         })
     })

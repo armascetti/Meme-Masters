@@ -1,29 +1,31 @@
 <%- include('../partials/html-head') %>
-<%- include('../partials/nav') %>
+  <%- include('../partials/nav') %>
 
-<main>
-  <% if (profile.avatar) { %>
+    <main>
+      <div>
+      <h1 id="title"><%= profile.name%>'s Profile</h1>
+    </div>
     <div>
-      <img 
-        class="profile-avatar"
-        src="<%= profile.avatar %>" 
-        alt="<%= profile.name %> avatar"
-      >
+      <h1 id="titleTwo">Favorite Memes</h1>
     </div>
-    <% if (profile.favoriteMemeUrls.length){ %>
-      <ul>
-       <% profile.favoriteMemeUrls.forEach( fav => { %>
-        <li>
-          <img 
-          class="favorite-Meme"
-          src="<%= fav %>" 
-          alt="favorite-Meme"
-        >
-        </li>
-      </ul>
-      <% }) %>
-   <%  } %>
-    </div>
-    <% } %>
-</main>
-<%- include('../partials/footer') %>
+      <% if (profile.avatar) { %> 
+          <div>
+            <div id="avatarWrapper">
+            <img class="profile-avatar" src="<%= profile.avatar %>" alt="<%= profile.name %> avatar">
+          </div>
+          </div>
+        <% } %>
+        <div>        
+          <div id="favoriteMemesContainer">
+            <% if (profile.favoriteMemeUrls.length){ %>              
+              <% profile.favoriteMemeUrls.forEach( fav => { %>
+                <div id="memeWrapper">
+                  <img class="favorite-Meme" src="<%= fav %>" alt="favorite-Meme" height="175" width="175">
+                </div>
+                <% }) %>
+          </div>
+          <% } %>
+        </div>
+       
+    </main>
+    <%- include('../partials/footer') %>

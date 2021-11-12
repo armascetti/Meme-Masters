@@ -1,47 +1,67 @@
 <%- include('../partials/html-head') %>
   <%- include('../partials/nav') %>
-
     <main>
-      <div class="memeCaption">
-        <div class="meme">
-          <form action="/profiles/<%= memeId %>" method="POST">
-            <% for(let i=0; i < results.length; i++){ %>
-              <% if (results[i].id===memeId) { %>
-                <img name="url" width="250" height="250" src="<%= results[i].url %>">
-                <input type="text" name="url" hidden value="<%= results[i].url %>">
-                <button type="submit">Add to Profile </button>
-          </form>
-          <% } %>
-        </div>
-        <% } %>
-          <div>
-            <% if (user){ %>
-              <form action="/allMemes/show/<%= memeId %>" method="POST">
-                <textarea type="text" name="content">
-                </textarea>
-                <button type="submit"> Add Caption </button><br>
-                <% if (captions.length) { %>
-              </form>
-              <% captions.forEach(c=> { %>
-                <% if (user._id==c.owner.toString()) { %>
-                  <form action="/allMemes/memes/<%= memeId %>/captions/<%= c._id %>?_method=DELETE" method="POST">
-                    <button id="deleteCapbtn" type="submit"> Delete My Caption </button>
-                  </form>
-                  <%}%>
-                    <img src="<%= c.avatar %>">
-                    <ul>
-                      <li>
-                        <%= c.content %>
-                      </li>
-                    </ul>
+      <section id="createMemeContainer">
+        <div class="memeCaption">
+          <div class="meme">
+            <form action="/profiles/<%= memeId %>" method="POST">
+              <% for(let i=0; i < results.length; i++){ %>
+                <% if (results[i].id===memeId) { %>
+                  <div>
+                    <div id="chosenMeme">
+                      <img id="allMemesImg" name="url" width="250" height="250" src="<%= results[i].url %>">
+                      <input type="text" name="url" hidden value="<%= results[i].url %>">
+                    </div>
+                    <div id="favoriteBtn">
+                      <button type="submit">Favorite This</button>
+                    </div>
+                  </div>                
+                </form>
+            <% } %>
           </div>
-          <% }) %>
-            <% } else { %>
-              <img src="<%= user.avatar %>">
-              <h2> No Captions Yet </h2>
+          <% } %>
+            <div>
+              <% if (user){ %>
+                <% if (captions.length) { %>
+                  <div>
+                  <% captions.forEach(c=> { %>
+                    <div
+                      style="display: flex; width: 95%; margin-bottom: 10px; border-radius: 10px;">
+                      <div>
+                        <img class="profile-avatar" src="<%= c.avatar %>">
+                      </div>
+                      <div>
+                        <h3 style="margin-left: 10px; font-size: 2em;">
+                          <%= c.content %>
+                        </h3>
+                      </div>
+                      <div>
+                        <% if (user._id==c.owner.toString()) { %>
+                          <form action="/allMemes/memes/<%= memeId %>/captions/<%= c._id %>?_method=DELETE"
+                            method="POST">
+                            <button style="font-weight: 600;" id="deleteBtn" type="submit">X</button>
+                          </form>
+                          <%}%>
+                      </div>
+                    </div>
+            </div>
+            <% }) %>
+              <form id="addNewComment" action="/allMemes/show/<%= memeId %>" method="POST">
+                <textarea id="addCaption" placeholder="Add Caption..." type="text" name="content"></textarea>
+                <button style="font-size: 2.5em;" type="submit" title="Add Caption">+</button>
               </form>
-              <% } %>
-                <% } %>
-
+          </div>
+              <% } else { %>
+                <form id="addNewComment" action="/allMemes/show/<%= memeId %>" method="POST">
+                <img src="<%= user.avatar %>">
+                <textarea id="addCaption" placeholder="Add Caption..." type="text" name="content"></textarea>
+                <button style="font-size: 2.5em;" type="submit" title="Add Caption">+</button>
+                <h2> No Captions Yet </h2>
+                </form>
+                <% } %> 
+                  <% } %>  
+               
+        </div>
+      </section>
     </main>
     <%- include('../partials/footer') %>
