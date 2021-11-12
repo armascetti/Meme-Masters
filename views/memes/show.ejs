@@ -4,10 +4,11 @@
     <main>
       <div class="memeCaption">
         <div class="meme">
-          <form action="/profiles/<%= memeId %>" type="text" method="POST">
+          <form action="/profiles/<%= memeId %>" method="POST">
             <% for(let i=0; i < results.length; i++){ %>
               <% if (results[i].id===memeId) { %>
-                <img width="250" height="250" src="<%= results[i].url %>">
+                <img name="url" width="250" height="250" src="<%= results[i].url %>">
+                <input type="text" name="url" hidden value="<%= results[i].url %>">
                 <button type="submit">Add to Profile </button>
           </form>
           <% } %>

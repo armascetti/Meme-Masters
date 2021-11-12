@@ -22,6 +22,7 @@ function allMemes(req, res) {
 
 
 function show(req, res) {
+  console.log("PARAMSS", req.params)
   const user = req.user.profile
   let captions = []
   Caption.find({ memeId: req.params.id })

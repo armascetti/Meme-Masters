@@ -32,7 +32,11 @@ function show(req, res) {
 }
 
 function saveMemeAsFavorite (req, res){
-  console.log("ADDD MEMEEE", req.body)
+  Profile.findById(req.user.profile._id)
+  .then (profile => {
+     profile.newMeme.push(req.body)
+     profile.save()
+  })
   res.redirect(`/profiles/${req.user.profile._id}`)
 }
 
