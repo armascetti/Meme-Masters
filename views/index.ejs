@@ -2,16 +2,21 @@
 <%- include('./partials/nav') %>
 
 <main>
-  <h1>Welcome <%= user ? user.profile.name : "to Meme-Masters!" %></h1>
-  <p><h2> Login to Make Your Meme!</h2></p>
+  <div id=main-index-container>
+  <h1 id="mainTitle">Welcome <%= user ? user.profile.name : "to Meme-Masters!" %></h1>
   <% if (user?.profile.avatar) { %>
-    <div>
+    <div id="main-idex-pics">
       <img 
         src="<%= user.profile.avatar %>" 
         alt="<%= user.profile.name %> avatar"
+        style="border-radius: 50%;"
       >
     </div>
-  <% } %>
+    <div id="demoMeme">
+    <img src="https://i.pinimg.com/564x/25/38/d8/2538d8583a11825b2178c29f16ad7d21.jpg" > 
+    <% } %> 
+  </div>
+</div>
 </main>
 
 
