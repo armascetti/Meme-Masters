@@ -10,10 +10,19 @@
         alt="<%= profile.name %> avatar"
       >
     </div>
-  
-
+    <% if (profile.favoriteMemeUrls.length){ %>
+      <ul>
+       <% profile.favoriteMemeUrls.forEach( fav => { %>
+        <li>
+          <img 
+          class="favorite-Meme"
+          src="<%= fav %>" 
+          alt="favorite-Meme"
+        >
+        </li>
       </ul>
-
+      <% }) %>
+   <%  } %>
     </div>
     <% } %>
 </main>

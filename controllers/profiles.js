@@ -31,13 +31,17 @@ function show(req, res) {
     })
 }
 
-function saveMemeAsFavorite (req, res){
+
+function saveMemeAsFavorite(req, res) {
   Profile.findById(req.user.profile._id)
-  .then (profile => {
-     profile.newMeme.push(req.body)
-     profile.save()
-  })
-  res.redirect(`/profiles/${req.user.profile._id}`)
+    .then(profile => {
+      profile.favoriteMemeUrls.push(req.body.url)
+       profile.save()
+      .then(() => {
+          console.log("PROFILEEEE", profile)
+          res.redirect(`/profiles/${req.user.profile._id}`)
+        })
+    })
 }
 
 
