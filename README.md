@@ -26,3 +26,9 @@ https://trello.com/b/QvGlYZHx/unit-2-project
 - Mobile responsive 
 - Add more unique styling 
 - Add more functionality to the profiles show page 
+
+# Technologies Used:
+- Node.js
+- Express
+- CSS
+- API 
